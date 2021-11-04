@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useCallback, useRef, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { useVirtual } from '../lib/react-virtual';
+import { useVirtual } from 'react-virtual';
 
 const Infinite = () => {
   const [data, setData] = useState(() => new Array(50).fill());
@@ -20,7 +20,7 @@ const Infinite = () => {
     size: hasMore ? data.length + 1 : data.length,
     parentRef,
     estimateSize: useCallback(() => 35, []),
-    overscan: 1
+    overscan: 5
   });
 
   return (
@@ -37,7 +37,7 @@ const Infinite = () => {
           ref={parentRef}
           className="List"
           style={{
-            maxHeight: `100vh`,
+            height: 200,
             width: `100%`,
             overflow: 'auto'
           }}
@@ -65,13 +65,12 @@ const Infinite = () => {
                       virtualRow.index % 2 ? 'ListItemOdd' : 'ListItemEven'
                     }
                     style={{
-                      // position: 'absolute',
-                      // top: 0,
-                      // left: 0,
-                      // width: '100%',
-                      height: `${virtualRow.size}px`
-                      // marginTop: `${virtualRow.start}px`
-                      // transform: `translateY(${virtualRow.start}px)`
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '100%',
+                      height: `${virtualRow.size}px`,
+                      transform: `translateY(${virtualRow.start}px)`
                     }}
                   >
                     Row {virtualRow.index}
