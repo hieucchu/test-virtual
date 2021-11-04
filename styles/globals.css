@@ -14,3 +14,26 @@ a {
 * {
   box-sizing: border-box;
 }
+
+html {
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.List {
+  border: 1px solid #e6e4dc;
+  max-width: 100%;
+}
+
+.ListItemEven,
+.ListItemOdd {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid red;
+}
+
+.ListItemEven {
+  background-color: #e6e4dc;
+}
